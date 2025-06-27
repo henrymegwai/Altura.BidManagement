@@ -28,7 +28,7 @@ public class CreateBidCommandHandlerTests
     {
         // Arrange
         var cancellationToken = CancellationToken.None;
-        var command = new CreateBidCommand("Test Bid", 100, State.Draft);
+        var command = new CreateBidCommand("Test Bid", 100, State.Draft.ToString());
         
         _validator.ValidateAsync(command, cancellationToken)
             .Returns(new FluentValidation.Results.ValidationResult());
@@ -56,7 +56,7 @@ public class CreateBidCommandHandlerTests
     {
         // Arrange
         var cancellationToken = CancellationToken.None;
-        var command = new CreateBidCommand("Test Bid", 100, State.Draft);
+        var command = new CreateBidCommand("Test Bid", 100, State.Draft.ToString());
         var id = Guid.NewGuid();
         
         _validator.ValidateAsync(command, cancellationToken)
@@ -80,7 +80,7 @@ public class CreateBidCommandHandlerTests
     {
         // Arrange
         var cancellationToken = CancellationToken.None;
-        var command = new CreateBidCommand("Test Bid", 100, State.Draft);
+        var command = new CreateBidCommand("Test Bid", 100, State.Draft.ToString());
         
         _validator.ValidateAsync(command, cancellationToken)
             .Returns(new FluentValidation.Results.ValidationResult());

@@ -29,7 +29,7 @@
    ```bash
    dotnet run --project Altura.BidManagement.WebApi
    ```
-4. Access the API at `http://localhost:7116/api/bids`
+4. Access the API at `http://localhost:5264/api/bids`
 
 ### Accessing the API
 5.	Swagger UI

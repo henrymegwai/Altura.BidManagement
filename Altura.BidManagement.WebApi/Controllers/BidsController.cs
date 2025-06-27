@@ -21,7 +21,7 @@ namespace Altura.BidManagement.WebApi.Controllers
             CancellationToken cancellationToken)
         {
             var result = await mediator.Send(
-                new CreateBidCommand(request.Title, request.Amount, request.State),
+                new CreateBidCommand(request.Title, request.Amount, request.State.ToString()),
                 cancellationToken);
             
             return result.Status ? Ok(result)  : BadRequest(result);

@@ -8,5 +8,5 @@ namespace Altura.BidManagement.Application.Features.Bids.Commands.CreateBid;
 public record CreateBidCommand( 
     string Title,
     decimal Amount,
-    State State
+    string State
 ) : ICommand<Response<BidDto>>;
