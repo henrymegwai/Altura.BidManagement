@@ -1,0 +1,6 @@
+@Altura.BidManagement.WebApi_HostAddress = http://localhost:5264
+
+GET {{Altura.BidManagement.WebApi_HostAddress}}/api/bids/
+Accept: application/json
+
+###
