@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.BidManagement.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.BidManagement.Infrastructure", "Altura.BidManagement.Infrastructure\Altura.BidManagement.Infrastructure.csproj", "{97F30651-7F4F-4819-98F4-FFA2653DE7DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.BidManagement.Persistence", "Altura.BidManagement.Persistence\Altura.BidManagement.Persistence.csproj", "{139575A0-B272-4DF5-A6D1-171F8F1B1F40}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,10 +43,6 @@ Global
 		{97F30651-7F4F-4819-98F4-FFA2653DE7DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97F30651-7F4F-4819-98F4-FFA2653DE7DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97F30651-7F4F-4819-98F4-FFA2653DE7DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{139575A0-B272-4DF5-A6D1-171F8F1B1F40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{139575A0-B272-4DF5-A6D1-171F8F1B1F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{139575A0-B272-4DF5-A6D1-171F8F1B1F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{139575A0-B272-4DF5-A6D1-171F8F1B1F40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +56,5 @@ Global
 		{75554DD2-6B51-4537-A4A6-B0F6BD89B80F} = {66AF7895-C26D-4FEC-80FF-9225D9418112}
 		{6FC0149F-2D19-4E60-80D2-74C982AD0157} = {B0CC4EDD-21E4-4AE4-AE1E-88ABCF74579A}
 		{97F30651-7F4F-4819-98F4-FFA2653DE7DA} = {B0CC4EDD-21E4-4AE4-AE1E-88ABCF74579A}
-		{139575A0-B272-4DF5-A6D1-171F8F1B1F40} = {B0CC4EDD-21E4-4AE4-AE1E-88ABCF74579A}
 	EndGlobalSection
 EndGlobal
