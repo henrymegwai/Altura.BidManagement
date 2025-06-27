@@ -1,6 +1,3 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Altura.BidManagement.Application.Features.Bids.Commands.TransitionBid;
 using Altura.BidManagement.Infrastructure.Persistence.Common.Repository;
 using FluentAssertions;
@@ -8,7 +5,6 @@ using FluentResults;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
-using Xunit;
 using State = Altura.BidManagement.Application.Common.State;
 
 namespace Altura.BidManagement.WebApi.UnitTests.Application;

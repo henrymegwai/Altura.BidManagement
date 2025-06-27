@@ -1,0 +1,89 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+  branches:
+    include:
+      - dev
+  paths:
+    include:
+      - Altura.BidManagement.Application/*
+      - Altura.BidManagement.Infrastructure/*
+      - Altura.BidManagement.Domain/*
+
+name: $(Date:yyyyMMdd).$(Rev:r)
+stages:
+  # Build Stage
+  - stage: build
+    displayName: "build stage"
+    jobs:
+      - job: build
+        displayName: build a job
+        pool:
+          vmImage: ubuntu-latest
+        
+        # Declare variables for use
+        variables:
+          buildConfiguration: 'Release'
+          buildPlatform: 'Any CPU'
+          workingDirectory: $(System.DefaultWorkingDirectory)/
+        
+        steps:
+          - task: UseDotNet@2
+            inputs:
+              packageType: 'sdk'
+              version: '7.0.410'
+              installationPath: $(Agent.ToolsDirectory)/dotnet
+
+          # Run script to restore solution dependencies
+          - script: dotnet restore
+            displayName: 'Restore dependencies'
+            workingDirectory: $(workingDirectory)
+
+          # Run script to build solution
+          - script: dotnet build --configuration $(buildConfiguration) /p:Platform="$(buildPlatform)"
+            displayName: 'Build solution'
+            workingDirectory: $(workingDirectory)
+          
+          # Run script to run unit tests
+          - script: dotnet test --configuration $(buildConfiguration) /p:Platform="$(buildPlatform)" --no-build --verbosity normal --logger trx
+            displayName: 'Run unit tests'
+            workingDirectory: $(workingDirectory)
+
+          # export unit tests result
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFiles: '**/TestResults/*.trx'
+              mergeTestResults: true
+              testRunTitle: 'Unit Tests Results'
+              platform: '$(buildPlatform)'
+              configuration: '$(buildConfiguration)'
+
+          - task: NuGetAuthenticate@0
+            displayName: "Authenticate to NuGet"
+
+          # build docker image and
+          - task: Docker@2
+            displayName: "Build Docker Image"
+            inputs:
+              command: "build"
+              containerRegistry: "azure-acr"
+              repository: $(imageName)
+              Dockerfile: $(Dockerfile)
+              buildContext: $(buildContext)
+              arguments: "--build-arg FEED_ACCESSTOKEN=$(VSS_NUGET_ACCESSTOKEN)"
+              tags: |
+                $(Build.BuildNumber)
+            
+            # push docker image to Azure Container Registry ACR
+          - task: Docker@2
+            displayName: "Push Image to azure cr"
+            inputs:
+              command: "push"
+              containerRegistry: "azure-acr"
+              repository: $(imageName)
+              tags: |
+                $(Build.BuildNumber)
+
