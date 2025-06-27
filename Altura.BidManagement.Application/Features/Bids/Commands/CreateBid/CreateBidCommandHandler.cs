@@ -62,7 +62,7 @@ public class CreateBidCommandHandler(IRepository<Bid> bidRepository,
             Guid.NewGuid(),
             request.Title,
             request.Amount,
-            request.State.ToString(),
+            request.State,
             DateTime.UtcNow);
     }
     
