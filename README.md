@@ -9,8 +9,7 @@
 #### Solution Structure (Clean Architecture)
  - Altura.BidManagement.WebApi: Main Web API project (entry point)
  - Altura.BidManagement.Application: Application logic, MediatR commands/queries
- - Altura.BidManagement.Infrastructure: Infrastructure and data access
- - Altura.BidManagement.Persistence: EF Core and SQLite persistence
+ - Altura.BidManagement.Infrastructure: data access, EF Core and SQLite persistence
  - Altura.BidManagement.Domain: Domain models and enums
  - Altura.BidManagement.WebApi.UnitTests: Unit tests
 
